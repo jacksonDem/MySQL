@@ -1,0 +1,72 @@
+create database Education;
+use Education;
+
+create table Univercities
+(
+univerID int not null auto_increment primary key,
+nameOf varchar (20) unique,
+city varchar (20),
+address varchar (20) unique,
+accreditation int 
+);
+
+insert into Univercities (univerID, nameOf, city, address, accreditation) values 
+(1, "Metalurhiyniy", "Dnipro", "Gagarina str,4", 4),
+(2, "Ivana Franka", "Lviv", "Striltsya str,29B", 5),
+(3, "Tarasa Shevchenka", "Kyiv", "Kharkivska str,118", 5),
+(4, "National Univercity", "Odessa", "Potyomkin str,14", 5),
+(5, "Kyiv Univercity", "Kyiv", "Konovaltsya str,36", 4 ),
+(6, "Medical Univercity", "Lviv", "Polischuk str,76",4),
+(7, "Univercity of Law", "Ivano-Frankivsk", "Sayuka str,59", 5),
+(8, "Custom Univercity", "Dnipro","Vernadskoho str,108", 5),
+(9, "Military Univercity", "Odessa", "Globy str,17", 5),
+(10, "Sport's Univercity", "Izyum", "Myhailivska str,88", 4);
+
+Create table Faculties
+(
+FacID int not null auto_increment primary key,
+nameOf varchar (20) unique,
+univerID int,
+foreign key (univerID) references Univercities (univerID)
+);
+
+Create table Teachers
+(
+TeacherID int not null auto_increment primary key,
+LastName varchar (20) not null,
+FirstName varchar (20) not null,
+speciality varchar (20) not null, 
+age int not null,
+univerID int,
+FacID int,
+foreign key (univerID) references Univercities (univerID),
+foreign key (FacID) references Faculties (FacID)
+);
+
+Create table Students
+(
+StudID int not null auto_increment primary key,
+LastName varchar (20) not null,
+FirstName varchar (20) not null,
+age int not null,
+univerID int,
+FacID int,
+TeacherID int,
+foreign key (univerID) references Univercities (univerID),
+foreign key (FacID) references Faculties (FacID),
+foreign key (TeacherID) references Teachers (TeacherID)
+);
+
+Create table Grupas
+(
+GroupID int not null auto_increment primary key,
+nameOf varchar (20) not null,
+univerID int,
+FacID int,
+TeacherID int,
+StudID int,
+foreign key (univerID) references Univercities (univerID),
+foreign key (FacID) references Faculties (FacID),
+foreign key (TeacherID) references Teachers (TeacherID),
+foreign key (StudID) references Students (StudID)
+);

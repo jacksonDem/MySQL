@@ -1,0 +1,30 @@
+SELECT * FROM Clients
+
+SELECT  clientName, clientNumber FROM Clients		                      <-( назви стовпців \ назва таблиці )
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientName = 'Mariia'     ( ім'я в одинарних \ подвійних лапках )
+
+SELECT *  FROM JJJ.friends WHERE nameOfPeople = 'Taras';
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientName LIKE 'M%'
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientName LIKE '%a'
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientName LIKE '%ii%'
+
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientNumber LIKE '%050%'
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientNumber > 1
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientNumber < 380990000000 AND clientNumber > 380550000000
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientNumber = 380666666666 OR clientNumber = 380959559595		(або такий або такий)
+
+SELECT  clientName, clientNumber FROM Clients WHERE clientNumber <> 38066666666
+
+
+
+% - показує будь-яку кількість символів після літери, або перед. 
+
+<> 380666666666	( не дорівнює \ покаже номери, які не є 38066666666666 \ тобто всі крім цього )

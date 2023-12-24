@@ -1,0 +1,31 @@
+ГРУПУВАННЯ
+
+код count є найпідходящим під функцію групування
+
+select count(age), age, clientName from clients group by age having clientName like '%a%'
+покаже: кількість - колонка вік - ім'я (має містити літеру а) та згрупує за віком
+
+СОРТУВАННЯ 
+
+select * from hotelsdb.clients order by salary desc limit 5 offset 2
+
+покаже 5 найоплачуваніших робітників і перші 2 проігноре
+
+ОБ'ЄДНАННЯ
+
+select * from cities join hotels on cities.cityID = hotels.cityID
+
+select * from cities join hotels on cities.cityID = hotels.cityID where cities.cityID is NULL 
+(щоб не повторювались рядки)
+
+FULL JOIN
+select * from cities right join hotels on cities.cityID = hotels.cityID 
+union all
+select * from cities left join hotels on cities.cityID = hotels.cityID ( В mySQL не працює функція full outer join )
+
+
+group by - групує
+order by - сортує 
+
+order by asc - сортує від меншого до більшого
+order by desc - сортує в зворотному порядку (від більшого до меншого)
